@@ -1,0 +1,4 @@
+interface:
+  display_name: "AgentSats Watchlist Digest"
+  short_description: "Create social watchlist digests."
+  default_prompt: "Create a watchlist digest for selected Twitter and TikTok accounts using AgentSats CLI JSON output."

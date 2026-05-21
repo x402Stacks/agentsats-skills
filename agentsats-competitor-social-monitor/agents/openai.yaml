@@ -1,0 +1,4 @@
+interface:
+  display_name: "Competitor Social Monitor"
+  short_description: "Monitor competitors on Twitter and TikTok."
+  default_prompt: "Ask for my company, app or service description, website, category, audience, geography, and competitors, then monitor public competitor posts with AgentSats."

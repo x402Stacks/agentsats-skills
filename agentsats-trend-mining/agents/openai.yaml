@@ -1,0 +1,4 @@
+interface:
+  display_name: "AgentSats Trend Mining"
+  short_description: "Mine social trends with AgentSats."
+  default_prompt: "Mine trends from a curated set of Twitter and TikTok creators using AgentSats CLI data."

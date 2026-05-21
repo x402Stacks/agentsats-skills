@@ -1,0 +1,4 @@
+interface:
+  display_name: "AgentSats Cross-Platform Analyzer"
+  short_description: "Compare Twitter and TikTok content."
+  default_prompt: "Compare a creator across Twitter and TikTok using AgentSats CLI data and produce reusable content recommendations."

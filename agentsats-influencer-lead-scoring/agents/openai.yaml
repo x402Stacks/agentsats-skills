@@ -1,0 +1,4 @@
+interface:
+  display_name: "AgentSats Influencer Scoring"
+  short_description: "Score creator leads with AgentSats."
+  default_prompt: "Score creator leads for a campaign using Twitter and TikTok data from the AgentSats CLI."

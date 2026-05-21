@@ -1,0 +1,4 @@
+interface:
+  display_name: "Twitter Tweet Idea Engine"
+  short_description: "Suggest tweets from account data."
+  default_prompt: "Analyze a Twitter account, recent tweets, niche, and similar accounts using AgentSats CLI data, then suggest new tweets."

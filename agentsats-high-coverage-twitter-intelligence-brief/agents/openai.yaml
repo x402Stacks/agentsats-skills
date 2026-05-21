@@ -1,0 +1,4 @@
+interface:
+  display_name: "High-Coverage Twitter Brief"
+  short_description: "Brief any topic from many Twitter signals."
+  default_prompt: "Ask for my Twitter topic and whether to run daily, then use 50+ AgentSats requests unless I provide a max cap."

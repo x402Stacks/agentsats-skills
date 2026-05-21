@@ -1,0 +1,4 @@
+interface:
+  display_name: "AgentSats Creator Brief"
+  short_description: "Create creator briefs with AgentSats."
+  default_prompt: "Create a creator intelligence brief from Twitter and TikTok profiles using AgentSats CLI JSON output."

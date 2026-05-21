@@ -1,0 +1,4 @@
+interface:
+  display_name: "TikTok Carousel Generator"
+  short_description: "Create TikTok carousel image prompts."
+  default_prompt: "Create a TikTok image carousel from a tweet, TikTok, or pasted social post using image generation."

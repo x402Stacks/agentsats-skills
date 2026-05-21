@@ -1,0 +1,4 @@
+interface:
+  display_name: "Twitter Topic Status Brief"
+  short_description: "Brief current Twitter topic status."
+  default_prompt: "Ask me for a Twitter topic and max AgentSats request budget, then produce a current status brief."
