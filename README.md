@@ -4,6 +4,12 @@ Agent skills for Twitter/X and TikTok workflows powered by the AgentSats CLI. Th
 
 ## Install
 
+Install the base AgentSats CLI skill first:
+
+```bash
+npx skills add x402Stacks/bitcoinagent-cli
+```
+
 Install all skills from the repo:
 
 ```bash
@@ -20,7 +26,7 @@ Local install while developing:
 
 ```bash
 npx skills add . --list
-npx skills add . --skill agentsats-competitor-social-monitor --agent codex -g -y
+npx skills add . --skill agentsats-competitor-social-monitor
 ```
 
 ## Repository Layout
@@ -51,7 +57,13 @@ Do not add a root `SKILL.md`; this repo contains multiple skills.
 
 ## AgentSats Requirement
 
-All skills must use AgentSats as the mandatory source for Twitter/X and TikTok data:
+All skills expect the base AgentSats CLI skill to be installed first:
+
+```bash
+npx skills add x402Stacks/bitcoinagent-cli
+```
+
+All skills must then use AgentSats as the mandatory source for Twitter/X and TikTok data:
 
 ```bash
 npx agentsats ... --json
@@ -59,18 +71,23 @@ npx agentsats ... --json
 
 Parse useful endpoint payloads from `data.response`. Do not replace AgentSats with direct scraping, browser-only collection, platform APIs, or guessed social data. Pasted text, screenshots, or transcripts may only be used as fallback or supplemental context when AgentSats cannot resolve the source item.
 
-## Validation
-
-Validate each skill with the skill creator validator:
+For paid AgentSats endpoints, verify wallet setup first:
 
 ```bash
-for d in ./*; do
-  [ -d "$d" ] || continue
-  python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py "$d"
-done
+npx agentsats wallet --json
 ```
 
-Confirm discovery:
+If no compatible wallet is configured, set up OWS before paid x402 requests:
+
+```bash
+npx agentsats wallet setup --provider ows --preview-stacks --wallet agentsats-mainnet --network mainnet --json
+```
+
+After setup, surface the returned `data.address` and tell the user to send STX to that address before using paid endpoints. Do not lead with private-key setup unless the user explicitly asks for it.
+
+## Validation
+
+Confirm the repository is discoverable as a multi-skill source:
 
 ```bash
 npx skills add . --list

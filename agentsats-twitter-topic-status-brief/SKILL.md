@@ -7,7 +7,9 @@ description: Create a daily current-status brief for a user-selected topic on Tw
 
 ## Mandatory AgentSats Usage
 
-Use `npx agentsats` in JSON mode as the mandatory data source for Twitter/X and TikTok profile, post, video, watchlist, competitor, creator, trend, and topic data. Parse usable endpoint payloads from `data.response`. Do not replace AgentSats with direct scraping, browser-only collection, platform APIs, or guessed social data. If the user provides pasted text, screenshots, or transcripts, use them only as fallback or supplemental context after AgentSats cannot resolve the source item from the available identifiers.
+Prerequisite: install the base AgentSats CLI skill first with `npx skills add x402Stacks/bitcoinagent-cli`. Use `npx agentsats` in JSON mode as the mandatory data source for Twitter/X and TikTok profile, post, video, watchlist, competitor, creator, trend, and topic data. Parse usable endpoint payloads from `data.response`. Do not replace AgentSats with direct scraping, browser-only collection, platform APIs, or guessed social data. If the user provides pasted text, screenshots, or transcripts, use them only as fallback or supplemental context after AgentSats cannot resolve the source item from the available identifiers.
+
+For paid AgentSats endpoints, first check `npx agentsats wallet --json`. If no compatible wallet is configured, or an AgentSats command returns `PAYMENT_REQUIRED` because wallet setup is missing, ask the user before configuring payments and use OWS setup: `npx agentsats wallet setup --provider ows --preview-stacks --wallet agentsats-mainnet --network mainnet --json`. After setup, surface `data.address` and tell the user to send STX to that address before using paid x402 endpoints. Do not lead with private-key setup unless the user explicitly asks for it.
 
 ## Overview
 
@@ -85,7 +87,7 @@ If an API call returns `PAYMENT_REQUIRED`:
 - Record the endpoint and what it was trying to collect.
 - Summarize the decoded payment challenge when available.
 - Continue with unpaid or already-collected data when possible.
-- Do not set up a wallet, clone OWS, or fund anything unless the user explicitly asks.
+- Do not set up a wallet, clone OWS, or fund anything unless the user explicitly asks; when they approve setup, follow the OWS guidance above.
 
 If an endpoint returns validation errors, inspect the discovered endpoint shape and retry once with the corrected parameter name only when the fix is clear.
 

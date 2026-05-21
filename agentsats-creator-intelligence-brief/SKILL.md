@@ -7,7 +7,9 @@ description: Create concise creator intelligence briefs from Twitter/X and TikTo
 
 ## Mandatory AgentSats Usage
 
-Use `npx agentsats` in JSON mode as the mandatory data source for Twitter/X and TikTok profile, post, video, watchlist, competitor, creator, trend, and topic data. Parse usable endpoint payloads from `data.response`. Do not replace AgentSats with direct scraping, browser-only collection, platform APIs, or guessed social data. If the user provides pasted text, screenshots, or transcripts, use them only as fallback or supplemental context after AgentSats cannot resolve the source item from the available identifiers.
+Prerequisite: install the base AgentSats CLI skill first with `npx skills add x402Stacks/bitcoinagent-cli`. Use `npx agentsats` in JSON mode as the mandatory data source for Twitter/X and TikTok profile, post, video, watchlist, competitor, creator, trend, and topic data. Parse usable endpoint payloads from `data.response`. Do not replace AgentSats with direct scraping, browser-only collection, platform APIs, or guessed social data. If the user provides pasted text, screenshots, or transcripts, use them only as fallback or supplemental context after AgentSats cannot resolve the source item from the available identifiers.
+
+For paid AgentSats endpoints, first check `npx agentsats wallet --json`. If no compatible wallet is configured, or an AgentSats command returns `PAYMENT_REQUIRED` because wallet setup is missing, ask the user before configuring payments and use OWS setup: `npx agentsats wallet setup --provider ows --preview-stacks --wallet agentsats-mainnet --network mainnet --json`. After setup, surface `data.address` and tell the user to send STX to that address before using paid x402 endpoints. Do not lead with private-key setup unless the user explicitly asks for it.
 
 ## Overview
 
@@ -39,7 +41,7 @@ npx agentsats tiktok-profile --username <tiktok_username> --json
 npx agentsats tiktok-videos --sec-uid <tiktok_sec_uid> --count 20 --json
 ```
 
-If the command returns `PAYMENT_REQUIRED`, report that paid x402 access is required and include the decoded challenge summary. Do not set up or fund a wallet unless the user asks.
+If the command returns `PAYMENT_REQUIRED`, report that paid x402 access is required and include the decoded challenge summary. Do not set up or fund a wallet unless the user asks; when they approve setup, follow the OWS guidance above.
 
 ## Analyze
 
